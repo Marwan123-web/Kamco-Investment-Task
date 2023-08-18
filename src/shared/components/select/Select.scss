@@ -1,0 +1,43 @@
+.select {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    label {
+        color: var(--black-color);
+        font-family: montserratRegular;
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    select {
+        width: 100%;
+        border-radius: 0.5rem;
+        border: 1px solid var(--gray-color);
+        background: var(--white-color);
+        padding: 0.75rem 1rem;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("/assets/images/ArrowDown.svg");
+        background-repeat: no-repeat;
+        background-position-x: 95%;
+        background-position-y: 10px;
+
+        &::placeholder {
+            color: var(--gray-color);
+            font-family: montserratRegular;
+            font-size: 0.875rem;
+            font-weight: 400;
+        }
+
+        &:active {
+            outline: none;
+            border: 1px solid var(--primary-color);
+        }
+    }
+}
