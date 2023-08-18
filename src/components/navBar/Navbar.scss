@@ -1,0 +1,63 @@
+.navbar {
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.25rem;
+
+        .line {
+            border-left: 0.15rem solid var(--gray-color);
+            height: 2.25rem;
+        }
+
+        .pageLabel {
+            color: var(--white-color);
+            font-family: montserratRegular;
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        .searchField {
+            position: relative;
+            width: 23.875rem;
+            padding: 0.75rem;
+            .inp #search {
+                border-radius: 2.5rem;
+                background-color: #ffffff33;
+                text-indent: 30px;
+                outline: none;
+                &::placeholder {
+                    font-family: montserratRegular;
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                    color: var(--lightGray-color) !important;
+                }
+            }
+
+            .iconImg {
+                position: absolute;
+                top: 35%;
+                left: 25px;
+            }
+        }
+
+        .options {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .accDropdown {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            color: var(--white-color);
+            font-family: montserratRegular;
+            font-size: 0.875rem;
+            font-weight: 400;
+        }
+    }
+}
