@@ -4,7 +4,20 @@ import uploadImg from "../../../assets/images/document-upload.svg";
 import searchImg from "../../../assets/images/Search.svg";
 import gridImg from "../../../assets/images/grid-5.svg";
 import "./Table.scss";
-const Table = ({ headers, children }: { headers: any; children?: any }) => {
+import Pagination from "../pagination/Pagination";
+const Table = ({
+    headers,
+    data,
+    total,
+    limit,
+    children,
+}: {
+    headers: any;
+    total: number;
+    limit: number;
+    data: any;
+    children?: any;
+}) => {
     return (
         <div className="tableBox">
             <div className="topHeader">
@@ -32,8 +45,12 @@ const Table = ({ headers, children }: { headers: any; children?: any }) => {
                 <tbody className="body">{children}</tbody>
             </table>
             <div className="tableFooter">
-                <div className="info">Showing 1 to 6 of 182 entries</div>
-                <div className="pagination">test</div>
+                <div className="info">
+                    Showing 1 to {total} of {total} entries
+                </div>
+                <div className="pagination">
+                    <Pagination data={data} limit={limit} total={data.length} />
+                </div>
             </div>
         </div>
     );

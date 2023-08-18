@@ -1,0 +1,36 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination a {
+    color: var(--black-color);
+    text-align: center;
+    font-family: montserratRegular;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.pagination a:hover {
+    background-color: var(--primaryInactive-color);
+}
+
+.active a {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
+}
+
+.arrowIcon {
+    width: 1rem;
+    height: 1rem;
+}

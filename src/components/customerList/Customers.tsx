@@ -33,10 +33,10 @@ const Customers = () => {
     ];
     return (
         <div>
-            <Table headers={tableHeader}>
+            <Table headers={tableHeader} total={tableData.length} limit={2} data={tableData}>
                 {tableData.map((rowData: any, index: number) => {
                     return (
-                        <tr>
+                        <tr key={index}>
                             <td className="td">{index}</td>
                             <td className="td underline">{rowData.name}</td>
                             <td className="td">{rowData.email}</td>
