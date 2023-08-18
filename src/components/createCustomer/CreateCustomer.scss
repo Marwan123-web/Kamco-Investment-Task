@@ -1,0 +1,60 @@
+.box {
+    background-color: var(--white-color);
+    padding: 1.25rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+
+    .label {
+        color: var(--main-color);
+        font-family: montserratRegular;
+        font-size: 1rem;
+        font-weight: 700;
+        width: 100%;
+        text-align: start;
+        position: relative;
+        display: inline-block;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background-color: var(--thirdGray-color);
+        }
+    }
+
+    .formFields {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 1.25rem;
+
+        & > * {
+            width: calc(100% / 3 - 2rem); /* Adjust margin as needed */
+        }
+    }
+    .submitbtn {
+        align-self: flex-end;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .box {
+        .formFields {
+            flex-direction: column;
+
+            & > * {
+                flex: 100%;
+
+                width: 100%;
+            }
+        }
+    }
+}

@@ -43,6 +43,7 @@ const Input = ({
                         <div className="country">
                             <Select id="countryCode" options={options} />
                         </div>
+                        <span className="line"></span>
                         <div className="number">
                             <input
                                 type="number"
