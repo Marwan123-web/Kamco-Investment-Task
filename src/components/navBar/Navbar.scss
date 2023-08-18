@@ -3,11 +3,19 @@
     display: flex;
     justify-content: space-between;
     background-color: var(--primary-color);
+
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+    }
     .item {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 1.25rem;
+
+        @media screen and (max-width: 767px) {
+            flex-direction: column;
+        }
 
         .line {
             border-left: 0.15rem solid var(--gray-color);
