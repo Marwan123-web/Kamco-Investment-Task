@@ -1,0 +1,128 @@
+.tableBox {
+    background-color: var(--white-color);
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
+    border: 1px solid var(--lightGray-color);
+    width: 100%;
+    .topHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        padding: 1.25rem;
+
+        @media screen and (max-width: 767px) {
+            flex-direction: column;
+        }
+
+        .title {
+            color: var(--black-color);
+            font-family: montserratRegular;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            gap: 0.94rem;
+        }
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        .header {
+            border-right: 1px solid var(--lightGray-color);
+            border-left: 1px solid var(--lightGray-color);
+            background: var(--forthGray-color);
+            tr {
+                .th {
+                    padding: 1.25rem;
+
+                    color: var(--primary-color);
+                    font-family: montserratRegular;
+                    font-size: 0.8125rem;
+                    font-weight: 600;
+
+                    .sort-img {
+                        vertical-align: bottom;
+                    }
+                }
+                .td {
+                    padding: 1.25rem;
+                    color: var(--black-color);
+                    font-family: montserratRegular;
+                    font-size: 0.8125rem;
+                    font-weight: 500;
+
+                    .underline {
+                        text-decoration-line: underline;
+                    }
+
+                    .status {
+                        .success {
+                            border-radius: 0.25rem;
+                            background: var(--success-color);
+                            color: var(--secondary-color);
+                            color: #559994;
+                            font-family: MomontserratRegularntserrat;
+                            font-size: 0.6875rem;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+
+        .body {
+            tr {
+                border-bottom: 1px solid #ccc;
+
+                .td {
+                    padding: 1.25rem;
+
+                    color: var(--black-color);
+                    font-family: montserratRegular;
+                    font-size: 0.8125rem;
+                    font-weight: 500;
+
+                    &.underline {
+                        text-decoration-line: underline;
+                    }
+
+                    &.status {
+                        border-radius: 0.25rem;
+                        font-family: MomontserratRegularntserrat;
+                        font-size: 0.6875rem;
+                        font-weight: 600;
+                        &.success {
+                            background: var(--success-color);
+                            color: var(--secondary-color);
+                        }
+                        &.failed {
+                            background: var(--success-color);
+                            color: var(--secondary-color);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .tableFooter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        padding: 1.25rem;
+
+        .info {
+            color: var(--gray-color);
+            font-family: montserratRegular;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+    }
+}
