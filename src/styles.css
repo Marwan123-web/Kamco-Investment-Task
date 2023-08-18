@@ -1,0 +1,14 @@
+@import url("fonts.css");
+
+:root {
+    --main-color: #000;
+    --black-color: #2a2a2a;
+    --darkGray-color: #535353;
+    --gray-color: #949494;
+    --lightGray-color: #ececec;
+    --white-color: #ffffff;
+    --primary-color: #002f6c;
+    --primaryInactive-color: #8097b5;
+    --secondary-color: #559994;
+    --thirdGray-color: #d9d9d9;
+}

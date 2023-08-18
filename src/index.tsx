@@ -9,32 +9,31 @@ import common_en from "./assets/local/common/en.json";
 import common_ar from "./assets/local/common/ar.json";
 import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./shared/ScrollToTop";
+import "./styles.css";
 
 i18next.init({
-  interpolation: { escapeValue: false },
-  lng: "ar", // default language
-  resources: {
-    en: {
-      common: common_en,
+    interpolation: { escapeValue: false },
+    lng: "en", // default language
+    resources: {
+        en: {
+            common: common_en,
+        },
+        ar: {
+            common: common_ar,
+        },
     },
-    ar: {
-      common: common_ar,
-    },
-  },
 });
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
-  <React.StrictMode>
-    <I18nextProvider i18n={i18next}>
-      <BrowserRouter>
-        <ScrollToTop />
-        <App />
-      </BrowserRouter>
-    </I18nextProvider>
-  </React.StrictMode>
+    <React.StrictMode>
+        <I18nextProvider i18n={i18next}>
+            <BrowserRouter>
+                <ScrollToTop />
+                <App />
+            </BrowserRouter>
+        </I18nextProvider>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
