@@ -1,9 +1,17 @@
 .app {
-    display: flex;
+    width: 100%;
+    // display: flex;
     background-color: var(--thirdGray-color);
 }
 
 .side-menu {
+    @media screen and (max-width: 767px) {
+        top: 300px !important;
+
+        .sideMenu {
+            width: auto;
+        }
+    }
     &.open {
         position: fixed;
         top: 0;
@@ -27,7 +35,7 @@
     &.close {
         position: fixed;
         top: 0;
-        left: -250px;
+        left: -260px;
         height: 100%;
         margin-top: 100px;
         transition: left 0.3s ease-in-out;
@@ -41,6 +49,7 @@
     display: flex;
     flex-direction: column;
     background-color: var(--thirdGray-color);
+    overflow-x: auto;
 
     &.close {
         margin-left: 260px;
@@ -49,6 +58,14 @@
     &.open {
         margin-left: 20px;
         transition: left 1s ease-in-out;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-top: 400px !important;
+
+        .sideMenu {
+            width: auto;
+        }
     }
 }
 
@@ -63,4 +80,8 @@
     align-items: center;
     padding: 0 20px;
     z-index: 100;
+
+    @media screen and (max-width: 767px) {
+        height: auto;
+    }
 }
