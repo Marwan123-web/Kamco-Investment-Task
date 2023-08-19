@@ -61,7 +61,7 @@ const CreateCustomer = () => {
                     id="mobilenumber"
                     placeholder="Enter customer mobile number"
                     label="Mobile number"
-                    type="mobile"
+                    type="number"
                     options={countriesOptions}
                     changeFun={(value: string) => updateCustomerData("mobile", value)}
                     value={customer.mobile}

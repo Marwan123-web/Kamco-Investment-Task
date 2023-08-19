@@ -35,49 +35,21 @@ const Input = ({
         }
     };
     return (
-        <div>
-            {type === "mobile" && options ? (
-                <div className="mobileinp">
-                    {label && <label htmlFor={id}>{label}</label>}
-                    <div className="mobileField">
-                        <div className="country">
-                            <Select id="countryCode" options={options} />
-                        </div>
-                        <span className="line"></span>
-                        <div className="number">
-                            <input
-                                type="number"
-                                className={classes}
-                                id={id}
-                                name={name}
-                                placeholder={placeholder}
-                                required={required}
-                                onChange={(e) => RunChangeFun(e)}
-                                value={value}
-                                min={min}
-                                step={step}
-                            />
-                        </div>
-                    </div>
-                </div>
-            ) : (
-                <div className="inp">
-                    {label && <label htmlFor={id}>{label}</label>}
-                    {children}
-                    <input
-                        type={type}
-                        className={classes}
-                        id={id}
-                        name={name}
-                        placeholder={placeholder}
-                        required={required}
-                        onChange={(e) => RunChangeFun(e)}
-                        value={value}
-                        min={min}
-                        step={step}
-                    />
-                </div>
-            )}
+        <div className="inp">
+            {label && <label htmlFor={id}>{label}</label>}
+            {children}
+            <input
+                type={type}
+                className={classes}
+                id={id}
+                name={name}
+                placeholder={placeholder}
+                required={required}
+                onChange={(e) => RunChangeFun(e)}
+                value={value}
+                min={min}
+                step={step}
+            />
         </div>
     );
 };
