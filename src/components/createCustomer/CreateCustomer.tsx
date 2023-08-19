@@ -46,6 +46,20 @@ const CreateCustomer = () => {
         { id: 3, name: "+765", value: "ALL", image: "https://flagcdn.com/al.svg" },
     ];
     const dispatch = useDispatch();
+    const resetForm = () => {
+        setCustomer({
+            id: usersList.items.length + 1,
+            firstName: "",
+            lastName: "",
+            email: "marawansalman98@gmail.com",
+            mobile: "",
+            account: "Account# 234551",
+            title: "",
+            gender: "male",
+            status: false,
+            lastLogin: "July 01, 2021 - 01:46 AM",
+        });
+    };
 
     return (
         <div className="box">
@@ -98,7 +112,10 @@ const CreateCustomer = () => {
             </div>
             <div className="submitbtn">
                 <Button
-                    ButtonFun={() => dispatch(addItem(customer as any))}
+                    ButtonFun={() => {
+                        dispatch(addItem(customer as any));
+                        resetForm();
+                    }}
                     label="Create account"
                     disabled={!customer.firstName || !customer.lastName || !customer.mobile || !customer.gender}
                 />

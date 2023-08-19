@@ -5,6 +5,7 @@ import searchImg from "../../../assets/images/Search.svg";
 import gridImg from "../../../assets/images/grid-5.svg";
 import "./Table.scss";
 import Pagination from "../pagination/Pagination";
+import { useEffect, useState } from "react";
 const Table = ({
     headers,
     data,
@@ -18,6 +19,19 @@ const Table = ({
     data: any;
     children?: any;
 }) => {
+    const [displayedData, setDisplayedData] = useState(data);
+
+    const handleChangePage = ({ selected }: { selected: number }) => {
+        const startIndex = (selected + 1 - 1) * limit;
+        const endIndex = startIndex + limit;
+        const newDisplayedData = data.slice(startIndex, endIndex);
+        setDisplayedData(newDisplayedData);
+    };
+    useEffect(() => {
+        console.log("children", children);
+
+        handleChangePage({ selected: 0 });
+    }, []);
     return (
         <div className="tableBox">
             <div className="topHeader">
@@ -42,14 +56,30 @@ const Table = ({
                         })}
                     </tr>
                 </thead>
-                <tbody className="body">{children}</tbody>
+                <tbody className="body">
+                    {displayedData.map((rowData: any, index: number) => {
+                        return (
+                            <tr key={index}>
+                                <td className="td">{index}</td>
+                                <td className="td underline">{rowData.firstName + "" + rowData.lastName}</td>
+                                <td className="td">{rowData.email}</td>
+                                <td className="td">{rowData.mobile}</td>
+                                <td className="td underline">{rowData.account}</td>
+                                <td className={rowData.status === true ? "td status success" : "td status failed"}>
+                                    {rowData.status ? "Verified" : "Not Verified"}
+                                </td>
+                                <td className="td">{rowData.lastLogin}</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
             </table>
             <div className="tableFooter">
                 <div className="info">
-                    Showing 1 to {total} of {total} entries
+                    Showing 1 to {displayedData.length} of {total} entries
                 </div>
                 <div className="pagination">
-                    <Pagination data={data} limit={limit} total={data.length} />
+                    <Pagination data={data} limit={limit} total={data.length} ChangeFun={handleChangePage} />
                 </div>
             </div>
         </div>

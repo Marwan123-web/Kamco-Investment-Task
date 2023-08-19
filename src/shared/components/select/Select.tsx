@@ -22,13 +22,7 @@ const Select = ({
     return (
         <div className="select" id={id}>
             {label && <label htmlFor="select-list">{label}</label>}
-            <select
-                id="select-list"
-                className={classes}
-                value={value}
-                defaultValue={""}
-                onChange={(e) => RunChangeFun(e)}
-            >
+            <select id="select-list" className={classes} value={value} onChange={(e) => RunChangeFun(e)}>
                 {options.map((option: { id: number; name: string; value: string }) => {
                     return (
                         <option value={option.value} key={option.id}>

@@ -13,7 +13,7 @@ const Pagination = ({
     ChangeFun?: Function;
     total: number;
     limit?: number;
-    data: any;
+    data?: any;
 }) => {
     const [currentPage, setCurrentPage] = useState(0);
     const handlePageChange = (event: any) => {

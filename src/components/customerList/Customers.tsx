@@ -22,23 +22,7 @@ const Customers = ({
                 <CreateCustomer />
             </div>
             <div className="customersList">
-                <Table headers={headers} total={data.length} limit={5} data={data}>
-                    {data.map((rowData: any, index: number) => {
-                        return (
-                            <tr key={index}>
-                                <td className="td">{index}</td>
-                                <td className="td underline">{rowData.firstName + "" + rowData.lastName}</td>
-                                <td className="td">{rowData.email}</td>
-                                <td className="td">{rowData.mobile}</td>
-                                <td className="td underline">{rowData.account}</td>
-                                <td className={rowData.status === true ? "td status success" : "td status failed"}>
-                                    {rowData.status ? "Verified" : "Not Verified"}
-                                </td>
-                                <td className="td">{rowData.lastLogin}</td>
-                            </tr>
-                        );
-                    })}
-                </Table>
+                <Table headers={headers} total={data.length} limit={5} data={data}></Table>
             </div>
         </div>
     );
