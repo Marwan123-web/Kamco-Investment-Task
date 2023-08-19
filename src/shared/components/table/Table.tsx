@@ -23,24 +23,25 @@ const Table = ({
     const [currentPage, setCurrentPage] = useState(1);
 
     const handleChangePage = ({ selected }: { selected: number }) => {
-        console.log("aaaaaa", selected);
-
         setCurrentPage(selected + 1);
         const startIndex = (selected + 1 - 1) * limit;
         const endIndex = startIndex + limit;
         const newDisplayedData = data.slice(startIndex, endIndex);
         setDisplayedData(newDisplayedData);
     };
-    const sliceData = () => {
-        const startIndex = (currentPage - 1) * limit;
+
+    const sliceData = (page: number) => {
+        const startIndex = (page - 1) * limit;
         const endIndex = startIndex + limit;
         const newDisplayedData = data.slice(startIndex, endIndex);
         setDisplayedData(newDisplayedData);
     };
+
     useEffect(() => {
         handleChangePage({ selected: 0 });
-        sliceData();
+        sliceData(1);
     }, [data]);
+
     return (
         <div className="tableBox">
             <div className="topHeader">
