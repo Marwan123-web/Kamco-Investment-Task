@@ -34,7 +34,7 @@ function App() {
     const usersList = useSelector((state: any) => state.users || []);
     let tableHeader = ["#", "Full  name", "Email", "Mobile number", "Account #", "Status", "Last login"];
 
-    const [menuOpen, setMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(true);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);

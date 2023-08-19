@@ -2,3 +2,13 @@ body {
     margin: 0;
     padding: 0;
 }
+
+a {
+    &:active,
+    &:visited {
+        color: var(--gray-color);
+    }
+    &.active {
+        color: var(--black-color);
+    }
+}

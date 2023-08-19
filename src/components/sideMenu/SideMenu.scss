@@ -88,13 +88,16 @@
                 gap: 0.75rem;
                 color: var(--gray-color);
 
-                &.active {
-                    color: var(--black-color);
-                }
                 .name {
                     font-family: montserratRegular;
                     font-size: 0.875rem;
                     font-weight: 600;
+                    a {
+                        color: var(--black-color) !important;
+                        font-family: montserratRegular;
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                    }
                 }
 
                 .expand {

@@ -3,8 +3,11 @@ import "./SideMenu.scss";
 import searchicon from "../../assets/images/graysearch.svg";
 
 import add from "../../assets/images/menu/add-square.svg";
+import { NavLink, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const SideMenu = ({ links }: { links: { id: number; name: string; image: string; hasChildren: boolean }[] }) => {
+    const [favMenu, setFavMenu] = useState(false);
     return (
         <div className="sideMenu">
             <div className="item">
@@ -14,8 +17,12 @@ const SideMenu = ({ links }: { links: { id: number; name: string; image: string;
                 </div>
             </div>
             <div className="item tabs">
-                <div className="tab ">Standard</div>
-                <div className="tab active"> Favorite</div>
+                <div className={favMenu === true ? "" : "tab active"} onClick={() => setFavMenu(false)}>
+                    Standard
+                </div>
+                <div className={favMenu === true ? "tab active" : ""} onClick={() => setFavMenu(true)}>
+                    Favorite
+                </div>
             </div>
 
             <div className="item navs">
@@ -25,7 +32,9 @@ const SideMenu = ({ links }: { links: { id: number; name: string; image: string;
                             <div className="icon">
                                 <img src={item.image} alt="item icon" />
                             </div>
-                            <div className="name">{item.name}</div>
+                            <div>
+                                <NavLink to={"/" + item.name}>{item.name}</NavLink>
+                            </div>
                             {item.hasChildren && (
                                 <div className="expand">
                                     <img src={add} alt="expand icon" />
