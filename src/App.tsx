@@ -10,6 +10,9 @@ import flag from "./assets/images/menu/flag.svg";
 import users from "./assets/images/menu/profile-2user.svg";
 import user from "./assets/images/menu/user-square.svg";
 import dashboard from "./assets/images/menu/chart-square.svg";
+import arrowright from "./assets/images/arrow-right.svg";
+import arrowleft from "./assets/images/arrow-left.svg";
+import { useState } from "react";
 function App() {
     const { data, loading, error } = useFetch({
         url: "https://jsonplaceholder.typicode.com/todos/1",
@@ -59,15 +62,28 @@ function App() {
         },
     ];
 
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
     return (
-        <div className="App" dir={i18n.language === "en" ? "ltr" : "rtl"}>
+        <div className="app" dir={i18n.language === "en" ? "ltr" : "rtl"}>
             <div className="navbar">
                 <Navbar />
             </div>
-            <div className="side-menu">
+
+            <div className={`side-menu ${menuOpen ? "open" : "close"}`} id="menu">
+                <img
+                    src={menuOpen ? arrowleft : arrowright}
+                    alt="menu icon"
+                    className="toggle-button"
+                    onClick={toggleMenu}
+                />
                 <SideMenu links={menuItems} />
             </div>
-            <div className="main-content">
+
+            <div className={`main-content ${menuOpen ? "close" : "open"}`}>
                 <div className="content">
                     {loading && <div>Loading...</div>}
                     <Routes>
