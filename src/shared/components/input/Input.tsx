@@ -13,7 +13,6 @@ const Input = ({
     classes,
     min,
     step,
-    options,
 }: {
     classes?: string;
     type?: string;
@@ -27,7 +26,6 @@ const Input = ({
     value?: string | number;
     min?: string | number;
     step?: string | number;
-    options?: { id: number; name: string; value: string; image?: string }[];
 }) => {
     const RunChangeFun = (e: any) => {
         if (changeFun) {
