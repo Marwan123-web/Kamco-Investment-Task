@@ -2,7 +2,7 @@ import "./Toggle.scss";
 const Toggle = ({
     id,
     classes,
-    ChangeFun,
+    changeFun,
     disabled,
     checked = false,
     label,
@@ -10,22 +10,27 @@ const Toggle = ({
     label: string;
     id: string;
     classes?: string;
-    ChangeFun?: Function;
+    changeFun?: Function;
     disabled?: boolean;
     checked?: boolean;
 }) => {
     const runChangeFun = (event: any) => {
-        if (ChangeFun) ChangeFun(event.target.checked);
+        if (changeFun) changeFun(event.target.checked);
     };
     return (
         <div className="field">
             <label className="toggleLabel">{label}</label>
 
             <div className="togle">
-                <label htmlFor="status">Active</label>
-
+                <label htmlFor="status">Inactive</label>
                 <div id="toggle-switch" className={classes}>
-                    <input id={id} type="checkbox" onChange={(e) => runChangeFun(e)} disabled={disabled} />
+                    <input
+                        id={id}
+                        type="checkbox"
+                        onChange={(e) => runChangeFun(e)}
+                        disabled={disabled}
+                        checked={checked}
+                    />
 
                     <label
                         className="circle"
