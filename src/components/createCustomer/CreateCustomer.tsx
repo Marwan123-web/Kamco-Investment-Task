@@ -6,9 +6,9 @@ import Radio from "../../shared/components/radio/Radio";
 import Toggle from "../../shared/components/toggle/Toggle";
 import Button from "../../shared/components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../redux-toolkit/cart/slice";
+import { addItem } from "../../redux-toolkit/users/slice";
 const CreateCustomer = () => {
-    const usersList = useSelector((state: any) => state.cart || []);
+    const usersList = useSelector((state: any) => state.users || []);
     const [customer, setCustomer] = useState({
         id: usersList.items.length + 1,
         firstName: "",

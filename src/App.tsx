@@ -12,9 +12,8 @@ import user from "./assets/images/menu/user-square.svg";
 import dashboard from "./assets/images/menu/chart-square.svg";
 import arrowright from "./assets/images/arrow-right.svg";
 import arrowleft from "./assets/images/arrow-left.svg";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { calcTotal } from "./redux-toolkit/cart/slice";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 function App() {
     const { data, loading, error } = useFetch({
         url: "https://jsonplaceholder.typicode.com/todos/1",
@@ -32,8 +31,7 @@ function App() {
         { id: 4, name: "Master data", image: flag, hasChildren: true },
         { id: 5, name: "Configuration", image: setting, hasChildren: false },
     ];
-    const usersList = useSelector((state: any) => state.cart || []);
-    const dispatch = useDispatch();
+    const usersList = useSelector((state: any) => state.users || []);
     let tableHeader = ["#", "Full  name", "Email", "Mobile number", "Account #", "Status", "Last login"];
 
     const [menuOpen, setMenuOpen] = useState(false);
@@ -41,9 +39,6 @@ function App() {
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
-    useEffect(() => {
-        dispatch(calcTotal());
-    }, [usersList, dispatch]);
     return (
         <div className="app" dir={i18n.language === "en" ? "ltr" : "rtl"}>
             <div className="navbar">

@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { localStorageMethods } from "../../localStorage/LocalStorage";
-import { cartReducers } from "./reducer";
+import { usersReducers } from "./reducer";
 
-const cartinitialState =
-    localStorageMethods.getItem("cart") !== null && localStorageMethods.getItem("cart") !== undefined
-        ? localStorageMethods.getItem("cart")
-        : localStorageMethods.addIetm("cart", [
+const usersinitialState =
+    localStorageMethods.getItem("users") !== null && localStorageMethods.getItem("users") !== undefined
+        ? localStorageMethods.getItem("users")
+        : localStorageMethods.addIetm("users", [
               {
                   id: "10",
                   firstName: "Marwan",
@@ -44,13 +44,13 @@ const cartinitialState =
               },
           ]);
 
-export const cartSlice = createSlice({
-    name: "cart",
+export const usersSlice = createSlice({
+    name: "users",
     initialState: {
-        items: cartinitialState || [],
+        items: usersinitialState || [],
     },
-    reducers: cartReducers,
+    reducers: usersReducers,
 });
 
-export const { addItem, editItem, deleteItem, calcTotal } = cartSlice.actions;
-export default cartSlice.reducer;
+export const { addItem, editItem, deleteItem, calcTotal } = usersSlice.actions;
+export default usersSlice.reducer;

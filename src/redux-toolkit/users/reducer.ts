@@ -1,28 +1,28 @@
 import { localStorageMethods } from "../../localStorage/LocalStorage";
 
-export const cartReducers = {
+export const usersReducers = {
     addItem: (state: any, action: any) => {
         state.items.push({ ...action.payload });
-        localStorageMethods.updateItem("cart", state.items);
+        localStorageMethods.updateItem("users", state.items);
     },
     editItem: (state: any, action: any) => {
-        let index = state.items.findIndex((cart: any) => cart?.id === action?.payload?.id);
+        let index = state.items.findIndex((users: any) => users?.id === action?.payload?.id);
 
         if (index !== -1) {
             if (state.items[index]?.quantity === 1 && action?.payload?.method === "remove") {
-                cartReducers.deleteItem(state, action);
+                usersReducers.deleteItem(state, action);
             } else {
                 state.items[index].quantity =
                     action?.payload?.method === "add"
                         ? state.items[index].quantity + 1
                         : state.items[index].quantity - 1;
-                localStorageMethods.updateItem("cart", state.items);
+                localStorageMethods.updateItem("users", state.items);
             }
         }
     },
     deleteItem: (state: any, action: any) => {
         state.items = state.items.filter((item: any) => item.id !== action.payload.id);
-        localStorageMethods.updateItem("cart", state.items);
+        localStorageMethods.updateItem("users", state.items);
     },
     calcTotal: (state: any) => {
         let total = 0;
