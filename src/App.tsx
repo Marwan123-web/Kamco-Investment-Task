@@ -13,6 +13,7 @@ import dashboard from "./assets/images/menu/chart-square.svg";
 import arrowright from "./assets/images/arrow-right.svg";
 import arrowleft from "./assets/images/arrow-left.svg";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 function App() {
     const { data, loading, error } = useFetch({
         url: "https://jsonplaceholder.typicode.com/todos/1",
@@ -30,37 +31,8 @@ function App() {
         { id: 4, name: "Master data", image: flag, hasChildren: true },
         { id: 5, name: "Configuration", image: setting, hasChildren: false },
     ];
-
+    const usersList = useSelector((state: any) => state.cart || []);
     let tableHeader = ["#", "Full  name", "Email", "Mobile number", "Account #", "Status", "Last login"];
-    let tableData = [
-        {
-            id: 1,
-            name: "Marwan Salman",
-            email: "marawansalman98@gmail.com",
-            mobile: "01009350660",
-            account: "Account# 234551",
-            status: "Verified",
-            lastLogin: "July 01, 2021 - 01:46 AM",
-        },
-        {
-            id: 2,
-            name: "Marwan Salman",
-            email: "marawansalman98@gmail.com",
-            mobile: "01009350660",
-            account: "Account# 234551",
-            status: "failed",
-            lastLogin: "July 01, 2021 - 01:46 AM",
-        },
-        {
-            id: 3,
-            name: "Marwan Salman",
-            email: "marawansalman98@gmail.com",
-            mobile: "01009350660",
-            account: "Account# 234551",
-            status: "Verified",
-            lastLogin: "July 01, 2021 - 01:46 AM",
-        },
-    ];
 
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -87,7 +59,7 @@ function App() {
                 <div className="content">
                     {loading && <div>Loading...</div>}
                     <Routes>
-                        <Route path="/customers" element={<Customers headers={tableHeader} data={tableData} />} />
+                        <Route path="/customers" element={<Customers headers={tableHeader} data={usersList.items} />} />
                     </Routes>
                 </div>
             </div>

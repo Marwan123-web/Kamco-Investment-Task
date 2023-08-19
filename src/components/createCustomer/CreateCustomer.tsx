@@ -5,21 +5,27 @@ import Select from "../../shared/components/select/Select";
 import Radio from "../../shared/components/radio/Radio";
 import Toggle from "../../shared/components/toggle/Toggle";
 import Button from "../../shared/components/button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../../redux-toolkit/cart/slice";
 const CreateCustomer = () => {
+    const usersList = useSelector((state: any) => state.cart || []);
     const [customer, setCustomer] = useState({
-        id: "",
+        id: usersList.items.length + 1,
         firstName: "",
         lastName: "",
+        email: "marawansalman98@gmail.com",
         mobile: "",
+        account: "Account# 234551",
         title: "",
         gender: "male",
         status: false,
+        lastLogin: "July 01, 2021 - 01:46 AM",
     });
 
     const updateCustomerData = (inputID: string, value: string) => {
         setCustomer({
             ...customer,
-            id: `${10}`,
+            id: `${usersList.items.length + 1}`,
             [inputID]: value,
         });
     };
@@ -39,6 +45,8 @@ const CreateCustomer = () => {
         { id: 2, name: "+345", value: "AFN", image: "https://flagcdn.com/af.svg" },
         { id: 3, name: "+765", value: "ALL", image: "https://flagcdn.com/al.svg" },
     ];
+    const dispatch = useDispatch();
+
     return (
         <div className="box">
             <div className="label">Create a customer</div>
@@ -90,14 +98,9 @@ const CreateCustomer = () => {
             </div>
             <div className="submitbtn">
                 <Button
+                    ButtonFun={() => dispatch(addItem(customer as any))}
                     label="Create account"
-                    disabled={
-                        !customer.firstName ||
-                        !customer.lastName ||
-                        !customer.mobile ||
-                        !customer.title ||
-                        !customer.gender
-                    }
+                    disabled={!customer.firstName || !customer.lastName || !customer.mobile || !customer.gender}
                 />
             </div>
         </div>

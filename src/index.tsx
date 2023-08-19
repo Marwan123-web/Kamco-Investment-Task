@@ -10,6 +10,8 @@ import common_ar from "./assets/local/common/ar.json";
 import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./shared/ScrollToTop";
 import "./styles.css";
+import { store } from "./redux-toolkit/store";
+import { Provider } from "react-redux";
 
 i18next.init({
     interpolation: { escapeValue: false },
@@ -27,12 +29,14 @@ i18next.init({
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
     <React.StrictMode>
-        <I18nextProvider i18n={i18next}>
-            <BrowserRouter>
-                <ScrollToTop />
-                <App />
-            </BrowserRouter>
-        </I18nextProvider>
+        <Provider store={store}>
+            <I18nextProvider i18n={i18next}>
+                <BrowserRouter>
+                    <ScrollToTop />
+                    <App />
+                </BrowserRouter>
+            </I18nextProvider>
+        </Provider>
     </React.StrictMode>
 );
 

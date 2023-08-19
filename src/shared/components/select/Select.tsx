@@ -8,10 +8,10 @@ const Select = ({
     changeFun,
 }: {
     id: string;
-    label?: string;
+    label: string;
     value?: string;
     classes?: string;
-    options: { id: number; name: string; value: string; image?: string }[];
+    options: { id: number; name: string; value: string }[];
     changeFun?: Function;
 }) => {
     const RunChangeFun = (e: any) => {
@@ -29,12 +29,10 @@ const Select = ({
                 defaultValue={""}
                 onChange={(e) => RunChangeFun(e)}
             >
-                {options.map((option: { id: number; name: string; value: string; image?: string }) => {
+                {options.map((option: { id: number; name: string; value: string }) => {
                     return (
                         <option value={option.value} key={option.id}>
                             {option.name}
-
-                            {option.image && <img src={option.image} alt="flag" />}
                         </option>
                     );
                 })}
