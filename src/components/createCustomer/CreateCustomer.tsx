@@ -5,10 +5,10 @@ import Select from "../../shared/components/select/Select";
 import Radio from "../../shared/components/radio/Radio";
 import Toggle from "../../shared/components/toggle/Toggle";
 import Button from "../../shared/components/button/Button";
-import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../redux-toolkit/users/slice";
+import { useAppDispatch, useAppSelector } from "../../redux-toolkit/hooks";
 const CreateCustomer = () => {
-    const usersList = useSelector((state: any) => state.users || []);
+    const usersList = useAppSelector((state: any) => state.users || []);
     const [customer, setCustomer] = useState({
         id: usersList.items.length + 1,
         firstName: "",
@@ -45,7 +45,7 @@ const CreateCustomer = () => {
         { id: 2, name: "+345", value: "AFN", image: "https://flagcdn.com/af.svg" },
         { id: 3, name: "+765", value: "ALL", image: "https://flagcdn.com/al.svg" },
     ];
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const resetForm = () => {
         setCustomer({
             id: usersList.items.length + 1,

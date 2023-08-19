@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Pagination.scss";
 import ReactPaginate from "react-paginate";
 import arrowLeft from "../../../assets/images/arrow-left.svg";
@@ -9,18 +9,22 @@ const Pagination = ({
     total = 0,
     limit = 10,
     data,
+    currentP,
 }: {
     ChangeFun?: Function;
     total: number;
     limit?: number;
     data?: any;
+    currentP: number;
 }) => {
-    const [currentPage, setCurrentPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(currentP);
     const handlePageChange = (event: any) => {
-        setCurrentPage(event);
-        setCurrentPage(event);
+        setCurrentPage(event.selected);
         if (ChangeFun) ChangeFun(event);
     };
+    useEffect(() => {
+        setCurrentPage(currentP);
+    }, [currentP]);
     const pageCount = Math.ceil(total / limit);
     return (
         <div>
@@ -37,6 +41,7 @@ const Pagination = ({
                             onPageChange={handlePageChange}
                             containerClassName={"pagination"}
                             activeClassName={"active"}
+                            forcePage={currentPage}
                         />
                     </div>
                 </div>

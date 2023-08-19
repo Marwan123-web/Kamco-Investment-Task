@@ -20,18 +20,27 @@ const Table = ({
     children?: any;
 }) => {
     const [displayedData, setDisplayedData] = useState(data);
+    const [currentPage, setCurrentPage] = useState(1);
 
     const handleChangePage = ({ selected }: { selected: number }) => {
+        console.log("aaaaaa", selected);
+
+        setCurrentPage(selected + 1);
         const startIndex = (selected + 1 - 1) * limit;
         const endIndex = startIndex + limit;
         const newDisplayedData = data.slice(startIndex, endIndex);
         setDisplayedData(newDisplayedData);
     };
+    const sliceData = () => {
+        const startIndex = (currentPage - 1) * limit;
+        const endIndex = startIndex + limit;
+        const newDisplayedData = data.slice(startIndex, endIndex);
+        setDisplayedData(newDisplayedData);
+    };
     useEffect(() => {
-        console.log("children", children);
-
         handleChangePage({ selected: 0 });
-    }, []);
+        sliceData();
+    }, [data]);
     return (
         <div className="tableBox">
             <div className="topHeader">
@@ -61,7 +70,7 @@ const Table = ({
                         return (
                             <tr key={index}>
                                 <td className="td">{index}</td>
-                                <td className="td underline">{rowData.firstName + "" + rowData.lastName}</td>
+                                <td className="td underline">{rowData.firstName + " " + rowData.lastName}</td>
                                 <td className="td">{rowData.email}</td>
                                 <td className="td">{rowData.mobile}</td>
                                 <td className="td underline">{rowData.account}</td>
@@ -79,7 +88,13 @@ const Table = ({
                     Showing 1 to {displayedData.length} of {total} entries
                 </div>
                 <div className="pagination">
-                    <Pagination data={data} limit={limit} total={data.length} ChangeFun={handleChangePage} />
+                    <Pagination
+                        data={data}
+                        limit={limit}
+                        total={data.length}
+                        ChangeFun={handleChangePage}
+                        currentP={currentPage - 1}
+                    />
                 </div>
             </div>
         </div>

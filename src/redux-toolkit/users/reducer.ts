@@ -2,7 +2,7 @@ import { localStorageMethods } from "../../localStorage/LocalStorage";
 
 export const usersReducers = {
     addItem: (state: any, action: any) => {
-        state.items.push({ ...action.payload });
+        state.items.push(action.payload);
         localStorageMethods.updateItem("users", state.items);
     },
     editItem: (state: any, action: any) => {

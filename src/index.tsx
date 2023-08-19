@@ -10,9 +10,8 @@ import common_ar from "./assets/local/common/ar.json";
 import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./shared/ScrollToTop";
 import "./styles.css";
-import { store } from "./redux-toolkit/store";
 import { Provider } from "react-redux";
-
+import { store } from "./redux-toolkit/store";
 i18next.init({
     interpolation: { escapeValue: false },
     lng: "en", // default language

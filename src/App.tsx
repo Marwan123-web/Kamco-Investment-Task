@@ -1,6 +1,5 @@
 import "./App.scss";
 import { useTranslation } from "react-i18next";
-import useFetch from "./hooks/useFetch";
 import { Routes, Route } from "react-router-dom";
 import Customers from "./components/customerList/Customers";
 import Navbar from "./components/navBar/Navbar";
@@ -13,16 +12,9 @@ import dashboard from "./assets/images/menu/chart-square.svg";
 import arrowright from "./assets/images/arrow-right.svg";
 import arrowleft from "./assets/images/arrow-left.svg";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "./redux-toolkit/hooks";
 function App() {
-    const { data, loading, error } = useFetch({
-        url: "https://jsonplaceholder.typicode.com/todos/1",
-    });
-
     const { t, i18n } = useTranslation("common");
-    if (error) {
-        console.log(error);
-    }
 
     let menuItems = [
         { id: 1, name: "Dashboard", image: dashboard, hasChildren: false },
@@ -31,7 +23,8 @@ function App() {
         { id: 4, name: "Master data", image: flag, hasChildren: true },
         { id: 5, name: "Configuration", image: setting, hasChildren: false },
     ];
-    const usersList = useSelector((state: any) => state.users || []);
+    const usersList = useAppSelector((state: any) => state.users);
+
     let tableHeader = ["#", "Full  name", "Email", "Mobile number", "Account #", "Status", "Last login"];
 
     const [menuOpen, setMenuOpen] = useState(true);
@@ -57,7 +50,6 @@ function App() {
 
             <div className={`main-content ${menuOpen ? "close" : "open"}`}>
                 <div className="content">
-                    {loading && <div>Loading...</div>}
                     <Routes>
                         <Route path="/customers" element={<Customers headers={tableHeader} data={usersList.items} />} />
                     </Routes>
